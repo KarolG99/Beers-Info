@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { IBeer } from "../types";
 
 export const useAllBears = (counter: number) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<IBeer[]>([]);
 
   useEffect(() => {
     fetch(`https://api.punkapi.com/v2/beers?page=${counter}&per_page=20`)
