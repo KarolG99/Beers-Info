@@ -19,12 +19,15 @@ export const useAllBears = (counter: number) => {
         setIsLoading(false);
         setData(data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setError("Coś poszło nie tak");
+        console.log(err);
+      });
   }, [counter]);
 
   return {
     isLoading,
     data,
-    error
+    error,
   };
 };
