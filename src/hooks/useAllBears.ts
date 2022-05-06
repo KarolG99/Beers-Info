@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { IBeer } from "../types";
 
-export const useAllBears = (counter: number) => {
+export const useAllBears = (url: string) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [data, setData] = useState<IBeer[]>([]);
 
   useEffect(() => {
-    fetch(`https://api.punkapi.com/v2/beers?page=${counter}&per_page=20`)
+    fetch(url)
       .then((res) => {
         if (!res.ok) {
           setError("Coś poszło nie tak");
@@ -24,7 +24,7 @@ export const useAllBears = (counter: number) => {
         setError("Coś poszło nie tak");
         console.log(err);
       });
-  }, [counter]);
+  }, [url]);
 
   return {
     isLoading,

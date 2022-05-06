@@ -1,5 +1,5 @@
 export interface IBeer {
-  id: number;
+  id?: number;
   name: string;
   tagline: string;
   first_brewed: string;
@@ -12,4 +12,9 @@ export interface IBeer {
   food_pairing: string[];
   brewers_tips: string;
   contributed_by: string;
+}
+
+export interface ISingleApiOption {
+  name: string;
+  content: string | any;
 }
