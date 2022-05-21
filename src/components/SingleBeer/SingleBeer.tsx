@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { IBeer } from "../../types";
 import SingleApiOption from "../SingleApiOption";
+import { ReactComponent as Bookmark } from "../../assets/icons/bookmark.svg";
+import { ReactComponent as BookmarkSolid } from "../../assets/icons/bookmark-solid.svg";
+import { FavBeersContext } from "../../Providers/FavBeersProvider";
 
 const SingleBeer = ({
   name,
@@ -13,8 +16,10 @@ const SingleBeer = ({
   food_pairing,
   brewers_tips,
   contributed_by,
+  onClick,
 }: IBeer) => {
   const [showMore, setShowMore] = useState(false);
+  const { favBeers } = useContext(FavBeersContext);
 
   const GetIngredientsNames = (ingredients: { name: string }[]) => {
     const result = ingredients.map((ingredient) => {
@@ -29,8 +34,20 @@ const SingleBeer = ({
   };
 
   return (
-    <div className="beer-wrapper">
-      <img className=" w-12 m-2" src={image_url} aria-hidden alt="beer's photo" />
+    <div className="beer-wrapper relative">
+      <button className=" absolute right-2" onClick={onClick}>
+        {favBeers.find((el) => el.name === name) ? (
+          <BookmarkSolid className=" fill-blue-500" />
+        ) : (
+          <Bookmark className=" fill-blue-500" />
+        )}
+      </button>
+      <img
+        className=" w-12 m-2"
+        src={image_url}
+        aria-hidden
+        alt="beer's photo"
+      />
       <h2 className="font-bold text-lg">{name}</h2>
       <SingleApiOption name="description" content={description} />
       <SingleApiOption name="tagline" content={tagline} />
@@ -52,10 +69,14 @@ const SingleBeer = ({
           />
           <SingleApiOption name="brewers tips" content={brewers_tips} />
           <SingleApiOption name="contributed by" content={contributed_by} />
-          <button className="more-less-btn" onClick={() => setShowMore(false)}>- less</button>
+          <button className="more-less-btn" onClick={() => setShowMore(false)}>
+            - less
+          </button>
         </>
       ) : (
-        <button className="more-less-btn" onClick={() => setShowMore(true)}>+ more</button>
+        <button className="more-less-btn" onClick={() => setShowMore(true)}>
+          + more
+        </button>
       )}
     </div>
   );

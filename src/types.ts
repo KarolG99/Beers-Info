@@ -12,9 +12,19 @@ export interface IBeer {
   food_pairing: string[];
   brewers_tips: string;
   contributed_by: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export interface ISingleApiOption {
   name: string;
   content: string | any;
+}
+
+export interface IBeerContext {
+  favBeers: IBeer[];
+  handleAddFavBeer: (beer: IBeer) => void;
+}
+
+export interface IProviderProps {
+  children: JSX.Element;
 }

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { useAllBears } from "../hooks/useAllBears";
+import { Link } from "react-router-dom";
+
 import SingleBeer from "./SingleBeer/SingleBeer";
+import { useAllBears } from "../hooks/useAllBears";
 
 const BeersPerName = () => {
   const [name, setName] = useState("");
@@ -17,6 +19,7 @@ const BeersPerName = () => {
 
   return (
     <div className="p-5 flex flex-col justify-center">
+      <Link to="/" className=" font-bold text-blue-500">{"<"} Cofnij</Link>
       <div className="flex flex-col items-center">
         <label htmlFor="name" className=" mb-2">
           Wprowadź nazwę piwa, które chcesz wyszukać
