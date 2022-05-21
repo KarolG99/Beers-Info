@@ -15,8 +15,6 @@ const BeersPerName = () => {
     setUrl(`https://api.punkapi.com/v2/beers?beer_name=${name}`);
   };
 
-  console.log(error)
-
   return (
     <div className="p-5 flex flex-col justify-center">
       <div className="flex flex-col items-center">
@@ -31,11 +29,21 @@ const BeersPerName = () => {
           value={name}
           onChange={handleInputChange}
         />
-        <button onClick={handleSearchBeer}>Szukaj</button>
+        <button
+          className={
+            name
+              ? `my-4 bg-blue-600 text-white p-1 rounded-md`
+              : `my-4 bg-blue-400 text-white p-1 rounded-md`
+          }
+          disabled={name ? false : true}
+          onClick={handleSearchBeer}
+        >
+          Szukaj
+        </button>
       </div>
 
       <div>
-        {isLoading && !error && <p>Ładowanie..</p>}
+        {isLoading && !error && url && <p className="loading">Ładowanie..</p>}
 
         {error && !data && <p>{error}</p>}
 

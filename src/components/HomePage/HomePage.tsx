@@ -11,7 +11,7 @@ const HomePage = () => {
 
   return (
     <div id="top" className="p-5">
-      {isLoading && !error && <p>Ładowanie..</p>}
+      {isLoading && !error && <p className="loading">Ładowanie..</p>}
 
       {error && <p>{error}</p>}
 

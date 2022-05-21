@@ -8,23 +8,25 @@ export const useAllBears = (url: string) => {
   const [data, setData] = useState<IBeer[]>([]);
 
   useEffect(() => {
-    fetch(url)
-      .then((res) => {
-        if (!res.ok) {
-          setError("Coś poszło nie tak");
+    if (url) {
+      fetch(url)
+        .then((res) => {
+          if (!res.ok) {
+            setError("Coś poszło nie tak");
+            setIsLoading(false);
+            throw Error(res.statusText);
+          }
+          return res.json();
+        })
+        .then((data) => {
           setIsLoading(false);
-          throw Error(res.statusText);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setIsLoading(false);
-        setData(data);
-      })
-      .catch((err) => {
-        setError("Coś poszło nie tak");
-        console.log(err);
-      });
+          setData(data);
+        })
+        .catch((err) => {
+          setError("Coś poszło nie tak");
+          console.log(err);
+        });
+    }
   }, [url]);
 
   return {
