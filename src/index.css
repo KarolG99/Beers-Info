@@ -3,13 +3,24 @@
 @tailwind utilities;
 
 @layer components {
+  html, body,  *, *::after, *::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
   .btn-next-prev {
     @apply font-bold text-blue-500 mx-3;
   }
   .option {
-    @apply text-gray-500;
+    @apply font-semibold;
   }
   .beer-wrapper {
     @apply w-[92%] max-w-[450px] p-3 shadow-md m-5 rounded-lg;
+  }
+  .option-wrapper {
+    @apply font-light;
+  }
+  .more-less-btn {
+    @apply font-bold text-blue-600 text-lg;
   }
 }

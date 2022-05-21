@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { useAllBears } from "../../hooks/useAllBears";
 import SingleBeer from "../SingleBeer/SingleBeer";
 
@@ -9,7 +10,7 @@ const HomePage = () => {
   const { data, isLoading, error } = useAllBears(url);
 
   return (
-    <div className="p-5">
+    <div id="top" className="p-5">
       {isLoading && !error && <p>Ładowanie..</p>}
 
       {error && <p>{error}</p>}
@@ -44,12 +45,14 @@ const HomePage = () => {
             )}
 
             {data.length >= BeersPerPage && (
-              <button
-                className="btn-next-prev"
-                onClick={() => setCounter((prev) => prev + 1)}
-              >
-                {"Next >"}
-              </button>
+              <a href="#top">
+                <button
+                  className="btn-next-prev"
+                  onClick={() => setCounter((prev) => prev + 1)}
+                >
+                  {"Next >"}
+                </button>
+              </a>
             )}
           </div>
         </>

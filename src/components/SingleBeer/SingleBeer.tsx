@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { IBeer } from "../../types";
 import SingleApiOption from "../SingleApiOption";
 
@@ -37,11 +38,11 @@ const SingleBeer = ({
 
       {showMore ? (
         <>
-          <p>
+          <p className="option-wrapper">
             <span className="option">malt ingredients: </span>
             {DisplayIngredients(ingredients.malt)}
           </p>
-          <p>
+          <p className="option-wrapper">
             <span className="option">hops ingredients: </span>
             {DisplayIngredients(ingredients.hops)}
           </p>
@@ -51,10 +52,10 @@ const SingleBeer = ({
           />
           <SingleApiOption name="brewers tips" content={brewers_tips} />
           <SingleApiOption name="contributed by" content={contributed_by} />
-          <button onClick={() => setShowMore(false)}>less</button>
+          <button className="more-less-btn" onClick={() => setShowMore(false)}>- less</button>
         </>
       ) : (
-        <button onClick={() => setShowMore(true)}>more</button>
+        <button className="more-less-btn" onClick={() => setShowMore(true)}>+ more</button>
       )}
     </div>
   );

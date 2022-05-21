@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { IBeer } from "../types";
 
 export const useAllBears = (url: string) => {
