@@ -10,7 +10,7 @@ const HomePage = () => {
   const [counter, setCounter] = useState(1);
   const url = `https://api.punkapi.com/v2/beers?page=${counter}&per_page=${BeersPerPage}`;
   const { data, isLoading, error } = useAllBears(url);
-  const { handleAddFavBeer } = useContext(FavBeersContext);
+  const { handleAddDeleteFavBeer } = useContext(FavBeersContext);
 
   return (
     <div id="top" className="p-5">
@@ -48,8 +48,7 @@ const HomePage = () => {
                 brewers_tips={beer.brewers_tips}
                 contributed_by={beer.contributed_by}
                 onClick={() => {
-                  handleAddFavBeer(beer)
-
+                  handleAddDeleteFavBeer(beer);
                 }}
               />
             ))}

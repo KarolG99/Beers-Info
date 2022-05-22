@@ -3,13 +3,13 @@ import { IBeer, IBeerContext, IProviderProps } from "../types";
 
 export const FavBeersContext = React.createContext<IBeerContext>({
   favBeers: [],
-  handleAddFavBeer: (): void => {},
+  handleAddDeleteFavBeer: (): void => {},
 });
 
 export const FavBeersProvider = ({ children }: IProviderProps) => {
   const [favBeers, setFavBeers] = useState<IBeer[]>([]);
 
-  const handleAddFavBeer = ({
+  const handleAddDeleteFavBeer = ({
     id,
     name,
     tagline,
@@ -35,11 +35,14 @@ export const FavBeersProvider = ({ children }: IProviderProps) => {
     };
     if (!favBeers.find((el) => el.id === newBeer.id)) {
       setFavBeers([newBeer, ...favBeers]);
+    } else {
+      const newFavBeers = favBeers.filter((el) => el.id !== id);
+      setFavBeers([...newFavBeers]);
     }
   };
 
   return (
-    <FavBeersContext.Provider value={{ favBeers, handleAddFavBeer }}>
+    <FavBeersContext.Provider value={{ favBeers, handleAddDeleteFavBeer }}>
       {children}
     </FavBeersContext.Provider>
   );

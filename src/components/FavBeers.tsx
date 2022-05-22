@@ -4,7 +4,7 @@ import { FavBeersContext } from "../Providers/FavBeersProvider";
 import SingleBeer from "./SingleBeer/SingleBeer";
 
 const FavBeers = () => {
-  const { favBeers } = useContext(FavBeersContext);
+  const { favBeers, handleAddDeleteFavBeer } = useContext(FavBeersContext);
 
   return (
     <div className="p-5 flex flex-col justify-center">
@@ -26,10 +26,11 @@ const FavBeers = () => {
               food_pairing={beer.food_pairing}
               brewers_tips={beer.brewers_tips}
               contributed_by={beer.contributed_by}
+              onClick={() => handleAddDeleteFavBeer(beer)}
             />
           ))
         ) : (
-          <h2 className=" my-20 italic">Nic jeszcze nie dodałeś</h2>
+          <h2 className=" my-20 italic">Nic jeszcze nie dodałeś/aś</h2>
         )}
       </div>
     </div>

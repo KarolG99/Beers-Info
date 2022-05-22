@@ -22,7 +22,7 @@ export interface ISingleApiOption {
 
 export interface IBeerContext {
   favBeers: IBeer[];
-  handleAddFavBeer: (beer: IBeer) => void;
+  handleAddDeleteFavBeer: (beer: IBeer) => void;
 }
 
 export interface IProviderProps {

@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import SingleBeer from "./SingleBeer/SingleBeer";
 import { useAllBears } from "../hooks/useAllBears";
+import { FavBeersContext } from "../Providers/FavBeersProvider";
 
 const BeersPerName = () => {
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
   const { data, isLoading, error } = useAllBears(url);
+  const { handleAddDeleteFavBeer } = useContext(FavBeersContext);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -19,7 +21,9 @@ const BeersPerName = () => {
 
   return (
     <div className="p-5 flex flex-col justify-center">
-      <Link to="/" className=" font-bold text-blue-500">{"<"} Cofnij</Link>
+      <Link to="/" className=" font-bold text-blue-500">
+        {"<"} Cofnij
+      </Link>
       <div className="flex flex-col items-center">
         <label htmlFor="name" className=" mb-2">
           Wprowadź nazwę piwa, które chcesz wyszukać
@@ -65,6 +69,7 @@ const BeersPerName = () => {
                   food_pairing={beer.food_pairing}
                   brewers_tips={beer.brewers_tips}
                   contributed_by={beer.contributed_by}
+                  onClick={() => handleAddDeleteFavBeer(beer)}
                 />
               ))}
             </div>
