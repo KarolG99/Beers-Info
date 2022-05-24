@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
-import SingleBeer from "./SingleBeer/SingleBeer";
-import { useAllBears } from "../hooks/useAllBears";
-import { FavBeersContext } from "../Providers/FavBeersProvider";
+import SingleBeer from "../SingleBeer/SingleBeer";
+import { useAllBears } from "../../hooks/useAllBears";
+import { FavBeersContext } from "../../Providers/FavBeersProvider";
 
 const BeersPerName = () => {
   const [name, setName] = useState("");
@@ -29,6 +29,7 @@ const BeersPerName = () => {
           Wprowadź nazwę piwa, które chcesz wyszukać
         </label>
         <input
+          placeholder="szukaj piwa"
           type="text"
           id="name"
           name="name"

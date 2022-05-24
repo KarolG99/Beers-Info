@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import BeersPerName from "./components/BeersPerName";
+import BeersPerName from "./components/BeersPerName/BeersPerName";
 import FavBeers from "./components/FavBeers";
 import HomePage from "./components/HomePage/HomePage";
 import { FavBeersProvider } from "./Providers/FavBeersProvider";

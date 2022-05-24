@@ -34,7 +34,7 @@ const SingleBeer = ({
   };
 
   return (
-    <div className="beer-wrapper relative">
+    <div className="beer-wrapper relative" data-testid="beer">
       <button className=" absolute right-2" onClick={onClick}>
         {favBeers.find((el) => el.name === name) ? (
           <BookmarkSolid className=" fill-blue-500" />
